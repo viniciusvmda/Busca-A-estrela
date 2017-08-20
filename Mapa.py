@@ -51,32 +51,34 @@ class Mapa:
 		Compara o menor custo com todas as cidades não visitadas de níveis superiores
 		Se houver algum com custo inferior, volta para esta cidade
 	'''
-	def comparaCidadesAnteriores(origem, menor):
-		# Usa o custo f da raiz como base 
-		outra_menor = (arvore.nome, arvore.f)
-		
-		# Pega a primeira cidade
-		cidade = self.arvore.proximas[0]
-		proximas = self.arvore.proximas[1:]
-		
-		if proximas:
-			for c in proximas
-				if not c.visitada and c.nome != origem.nome and c.f < menor[1]:
-					outra_menor = (c.nome, c.f)
-					
+	def comparaCidadesAnteriores(origem, menor, cidade):
+		outra_menor = menor
+
+		# Percorre as proximas cidades
+		for c in cidade.proximas:
+			# Verifica se o custo da cidade é menor
+			if not c.visitada and c.nome != origem and c.f < outra_menor[1]:
+				outra_menor = (c.nome, c.f)
+			# Se a cidade tiver cidades adjacentes utiliza recursao
+			if c.proximas:
+				aux = comparaCidadesAnteriores(origem, outra_menor, c)
+				if aux.f < outra_menor[1]:
+					outra_menor = aux
+
+		return outra_menor
 
 
-
+	# Expande as cidades do nó origem e retorna qual tem o menor custo 
 	def vaiProximaCidade(origem):
 		adjacentes = mapa[origem.nome]
 		# Se possuir cidades adjacentes
-		if adjacentes					
+		if adjacentes:					
 			# Pega a primeira cidade adjacente como menor distancia
 			aux = adjacentes.keys()[0]
 			menor = (aux, adjacentes[aux])			# (nome, distancia)
 			
 			# Verifica qual a cidade com menor distância dentre as adjacentes
-			for cidade, distancia in adjacentes
+			for cidade, distancia in adjacentes:
 				g = origem.g + distancia
 				h = Dicionario.distancia_reta[cidade]
 				
@@ -91,12 +93,10 @@ class Mapa:
 			menor = None
 
 		# Se a origem for a raiz da arvore não precisa verificar
-		if arvore.nome != origem.nome
-			outra_menor = comparaCidadesAnteriores(origem, menor)
-			
-			if outra_menor
-				menor = outra_menor
+		if arvore.nome != origem.nome:
+			menor = comparaCidadesAnteriores(origem, menor)
 		
+		# Retorna o nome da menor cidade
 		return menor[0]
 
 
@@ -120,3 +120,4 @@ class Mapa:
 					break
 			# Verifica em níveis superiores
 			if not achou:
+				
