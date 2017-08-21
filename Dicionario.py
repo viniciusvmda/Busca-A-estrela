@@ -1,10 +1,10 @@
-'''#####################################################
+#####################################################
 #	Laboratorio de Inteligencia Artificial
 #
 #	Alunos:	Renan Mateus Bernardo do Nascimento
 #			Vinicius Magalhaes D'Assuncao
 #
-'''#####################################################
+#####################################################
 
 class Dicionario:
 	
@@ -22,7 +22,7 @@ class Dicionario:
 						'mehadia': 241,
 						'neamt': 234,
 						'oradea': 380,
-						'pitesti': 10,
+						'pitesti': 100,
 						'rimnicu vikea': 193,
 						'sibiu': 253,
 						'timisoara': 329,

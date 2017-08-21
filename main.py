@@ -1,10 +1,10 @@
-'''#####################################################
+#####################################################
 #	Laboratorio de Inteligencia Artificial
 #
 #	Alunos:	Renan Mateus Bernardo do Nascimento
 #			Vinicius Magalhaes D'Assuncao
 #
-'''#####################################################
+#####################################################
 
 
 from Mapa import Mapa
@@ -13,5 +13,4 @@ arquivo = 'mapa_cidades.txt'
 
 mapa = Mapa()
 mapa.montarMapa(arquivo)
-mapa.imprimirMapa()
-mapa.andarMapa('oradea', 'fagaras')
+mapa.andarMapa('lugoj', 'bucharest')
